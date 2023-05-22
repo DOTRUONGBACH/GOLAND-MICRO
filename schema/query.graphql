@@ -1,0 +1,6 @@
+type Query {
+    Customers(after: Cursor, first: Int, before: Cursor, last: Int, orderBy: CustomerOrder): CustomerConnection!
+    Accounts(after: Cursor, first: Int, before: Cursor, last: Int, orderBy: AccountOrder): AccountConnection!
+    GetAccountByID(input: ID!): AccountByIDResponse!
+    # Flights(after: Cursor, first: Int, before: Cursor, last: Int, orderBy: FlightOrder): FlightConnection!
+}

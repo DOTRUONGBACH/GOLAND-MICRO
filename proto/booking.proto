@@ -1,0 +1,67 @@
+syntax = "proto3";
+package training;
+option go_package = "./;pb";
+
+import "google/protobuf/timestamp.proto";
+
+service BookingServiceRPC {
+    rpc GetBookingByID(GetBookingByIdRequest) returns(Booking);
+    rpc CreateBooking(CreateBookingRequest) returns (Booking);
+    rpc UpdateBookingStatus(UpdateBookingStatusRequest) returns (Booking);
+    rpc DeleteBooking(DeleteBookingRequest) returns (DeleteBookingResponse);
+}
+
+message Booking {
+    string id = 1;
+    float total_cost = 2;
+    int32 total_ticket = 3;
+    enum Status{
+        Success = 0;
+        Fail = 1;
+    };
+    Status status = 4;
+    google.protobuf.Timestamp created_at = 5;
+    google.protobuf.Timestamp updated_at = 6;
+}
+
+message BookingInput {
+    float total_cost = 1;
+    int32 total_ticket = 2;
+    enum Status{
+        Success = 0;
+        Fail = 1;
+    };
+    Status status = 3;
+}
+
+message GetBookingByIdRequest {
+    string id = 1;
+}
+
+message CreateBookingRequest {
+    int32 total_ticket = 1;
+    enum Status{
+        Success = 0;
+        Fail = 1;
+    };
+    Status status = 2; 
+}
+
+message UpdateBookingStatusRequest {
+    string id = 1;
+    enum Status{
+        Success = 0;
+        Fail = 1;
+        Canceled = 2;
+    };
+    Status status = 2;
+}
+
+message DeleteBookingRequest {
+    string id = 1;
+}
+
+message DeleteBookingResponse {
+    bool is_deleted = 1;
+}
+

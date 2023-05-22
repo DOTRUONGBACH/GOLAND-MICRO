@@ -1,0 +1,8 @@
+type Mutation {
+    # newCustomer(input: NewCustomerInput!): Customer!
+    deleteCustomer(id: ID!): Boolean!
+    newAccount(input: NewAccountInput!): Account!
+    accResetPassword(input: AccountResetPasswordInput!): String!
+    login(input: AccountLogin!): AccountLoginResponse!
+    newFlight(input: NewFlightInput!): Flight!
+}

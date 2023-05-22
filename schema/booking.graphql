@@ -1,0 +1,54 @@
+type Booking {
+    id: ID!
+    totalCost: String!
+    totalTicket: Int!
+    status: BookingStatus!
+    createdAt: Time
+    updatedAt: Time
+}
+
+enum BookingStatus {
+    Success
+    Fail
+}
+
+enum BookingOrderField {
+    ID
+    CREATED_AT
+    UPDATED_AT
+}
+
+input BookingOrder {
+    direction: OrderDirection!
+    field: BookingOrderField
+}
+
+type BookingConnection {
+    edges: [BookingEdge]
+    pageInfo: PageInfo!
+    totalCount: Int!
+}
+
+type BookingEdge {
+    node: Booking
+    cursor: Cursor!
+}
+
+input BookingInput{
+    totalCost: String!
+    totalTicket: Int!
+    status: BookingStatus!
+}
+
+
+input NewBookingInput {
+    flightCode: String!
+    totalTicket: Int!
+}
+
+
+input UpdateBookingStatusInput{
+    id: ID!
+    BookingInput: BookingInput!
+}
+
